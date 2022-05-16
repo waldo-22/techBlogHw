@@ -11,7 +11,33 @@ router.post('/', withAuth, async (req, res) => {
 
     res.status(200).json(newPost);
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
+  }
+});
+
+router.get('/:id', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findOne({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
+
+    if (!postData) {
+      res.status(404).json({ message: 'No Post found with this id!' });
+      return;
+    }
+
+    const post = postData.get({ plain: true });
+    console.log(post)
+    res.render('updatePost', {
+      title: post.title, text: post.body
+    });
+
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 

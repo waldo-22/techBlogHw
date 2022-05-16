@@ -1,17 +1,11 @@
-<div class="row">
-    <div class="col-auto">
-        <h2>Welcome!</h2>
-    </div>
-</div>
-
 <div class="row mt-4">
     <div class="col-md-6">
-        <h3>Create a New Post:</h3>
+        <h3>Update Post:</h3>
 
-        <form class="form new-post-form">
+        <form class="form update-post-form">
             <div class="form-group">
                 <label for="post-title">Post Title:</label>
-                <input class="form-input" type="text" id="post-title" name="post-title" />
+                <input class="form-input" type="text" id="post-title" name="post-title" value = "{{title}}">
             </div>
             {{!-- <div class="form-group">
                 <label for="project-funding">needed funding ($):</label>
@@ -19,19 +13,13 @@
             </div> --}}
             <div class="form-group">
                 <label for="post-desc">Comments:</label>
-                <textarea class="form-input" id="post-desc" name="post-desc"></textarea>
+                <input class="form-input" id="post-desc" name="post-desc" value = "{{text}}">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Post</button>
+                <button type="submit" class="btn btn-primary updatePostButton"> Update Post</button>
             </div>
         </form>
     </div>
-
-    {{#if post.length}}
-    <div class="col-md-6 project-list">
-        <h3>Current Projects:</h3>
-    </div>
-    {{/if}}
 </div>
 
-<script src="./js/post.js"></script>
+<script src="./js/updatedPost.js"></script>

@@ -19,7 +19,8 @@
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/dashboard">post</a> |
+        <a href="/post">post</a>
+        <a href="/profile">dashboard</a>
         <button class="no-button" id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>
@@ -28,7 +29,7 @@
     </header>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
-      {{{ body }}}
+      {{{body}}}
     </main>
     <footer>
       
