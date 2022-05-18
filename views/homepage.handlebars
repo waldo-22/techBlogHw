@@ -6,7 +6,7 @@
   <div class="col-md-5">
     <p>
       {{!-- <span for="img" aria-label="money">💲</span> --}}
-      <p>{{post.title}}</p>
+      <a href="/post/{{post.id}}/comment">{{post.title}}</a>
     </p>
     <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
   </div>

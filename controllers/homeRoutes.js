@@ -76,6 +76,28 @@ router.get('/Post/:id', async (req, res) => {
   }
 });
 
+router.get('/post/:id/comment', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User, Post,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    const post = postData.get({ plain: true });
+
+    res.render('comments', {
+      ...post,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/post/:id/updatePost', withAuth, async (req, res) => {
   try {
     const postData = await Post.findOne({
