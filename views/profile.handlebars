@@ -1,27 +1,43 @@
 {{!-- Style later --}}
-
-<p>hello {{name}}</p>
+<section>
+    <h3>Current Posts:</h3>
+    <p>hello {{name}}</p>
+</section>
 {{#each posts}}
-<a style="font-size: 20px;" href="/api/post/{{id}}">{{title}}</a>
-<p>{{body}}</p>
-{{else}}
-<p class="empty">No content</p>
+    <section>
+        {{!-- <div>
+            <a style="font-size: 20px;" href="/post/{{id}}/updatePost">{{title}}</a>
+        </div> --}}
+            
+        <div>
+            <p>{{body}}</p>
+            <div class="col-md-4">
+                <a href="/post/{{id}}/updatePost"><button class="btn btn-sm btn">Edit</button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-sm btn-danger deleteButton" data-id="{{id}}">DELETE</button>
+            </div>
+        </div>
+    {{!-- {{else}}
+    <p class="empty">No content</p> --}}
+    </section>
 {{/each}}
 
-{{#if posts.length}}
+{{!-- {{#if posts.length}} --}}
+{{!-- {{#each posts as |post|}}
 <div class="col-md-6 post-list">
-    <h3>Current Posts:</h3>
 
-    {{#each posts as |post|}}
+
+
+
     <div class="row mb-2">
         <div class="col-md-8">
             <h4><a href="/project/{{post.id}}">{{post.name}}</a></h4>
         </div>
-        <div class="col-md-4">
-            <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
-        </div>
+
     </div>
-    {{/each}}
+
 </div>
-{{/if}}
+{{/each}} --}}
+{{!-- {{/if}} --}}
 <script src="./js/profile.js"></script>

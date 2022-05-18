@@ -59,16 +59,16 @@ router.get('/Post/:id', async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
-          model: User,
+          model: User, Post,
           attributes: ['name'],
         },
       ],
     });
 
-    const Post = postData.get({ plain: true });
+    const post = postData.get({ plain: true });
 
     res.render('Post', {
-      ...Post,
+      ...post,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -78,18 +78,19 @@ router.get('/Post/:id', async (req, res) => {
 
 router.get('/post/:id/updatePost', withAuth, async (req, res) => {
   try {
-    const postData = await Post.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['username'],
-        },
-      ],
+    const postData = await Post.findOne({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
     });
     const post = postData.get({ plain: true });
+
+    console.log(post)
     res.render('updatePost', {
-      ...post,
-      logged_in: true
+      title: post.title, text: post.body,
+      post,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);

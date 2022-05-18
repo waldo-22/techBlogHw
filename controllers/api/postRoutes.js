@@ -16,6 +16,24 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+
+router.put('/:id', withAuth, async (req, res) => {
+  console.log(req.body)
+  try {
+    const editedPost = await Post.update( req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    res.status(200).json(editedPost);
+  } catch (err) {
+    console.log(err)
+    res.status(400).json(err);
+  }
+});
+
+
 router.get('/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findOne({
