@@ -45,9 +45,11 @@
   //   }
   // }
 // };
-
+console.log("test")
 
 const delButtonHandler = async (event) => {
+  console.log(event.target)
+  console.log("clicked button")
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
     console.log(id)
@@ -55,7 +57,7 @@ const delButtonHandler = async (event) => {
     const response = await fetch(`/api/post/${id}`, {
       method: 'DELETE',
     });
-
+    console.log('deleted')
     if (response.ok) {
       document.location.replace('/profile');
     } else {
@@ -64,5 +66,6 @@ const delButtonHandler = async (event) => {
   }
 };
 document
-  .querySelector('.deleteButton')
+  .querySelector('.posts')
   .addEventListener('click', delButtonHandler);
+

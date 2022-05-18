@@ -1,8 +1,8 @@
 {{!-- Style later --}}
-<section>
+<section class="posts">
     <h3>Current Posts:</h3>
     <p>hello {{name}}</p>
-</section>
+
 {{#each posts}}
     <section>
         {{!-- <div>
@@ -12,9 +12,9 @@
         <div>
             <p>{{body}}</p>
             <div class="col-md-4">
-                <a href="/post/{{id}}/updatePost"><button class="btn btn-sm btn">Edit</button>
+                <a href="/post/{{id}}/updatePost"><button class="btn btn-sm btn">Edit</button></a>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" >
                 <button class="btn btn-sm btn-danger deleteButton" data-id="{{id}}">DELETE</button>
             </div>
         </div>
@@ -22,7 +22,7 @@
     <p class="empty">No content</p> --}}
     </section>
 {{/each}}
-
+</section>
 {{!-- {{#if posts.length}} --}}
 {{!-- {{#each posts as |post|}}
 <div class="col-md-6 post-list">
