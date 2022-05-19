@@ -11,32 +11,32 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+        // name: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        // },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
         },
         date_created: {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
         }, 
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
-        },
+        // user_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'user',
+        //         key: 'id',
+        //     },
+        // },
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'comments',
+        modelName: 'comment',
     }
 );
 
