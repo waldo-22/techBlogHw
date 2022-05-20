@@ -13,11 +13,23 @@
             </div>
             <div class="form-group">
                 <label for="postComment">Any comments?</label>
-                <input name="post-id" class="form-input" id="comment-desc" name="postComment">
+                <input data-id="{{id}}" class="form-input" id="comment-desc" name="postComment">
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary addedCommentButton"> add comments</button>
             </div>
+            {{#each comments as |comment| }}
+            <div class="row mb-4 project">
+                <div class="col-md-5">
+                    <p>
+                        {{comment.description}}
+                    </p>
+                </div>
+                <div class="col-md-7">
+                    <p>Created by {{comment.user.name}} on {{format_date comment.date_created}}</p>
+                </div>
+            </div>
+            {{/each}}
         </form>
     </div>
 </div>

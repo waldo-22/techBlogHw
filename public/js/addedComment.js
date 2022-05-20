@@ -3,10 +3,8 @@ const commentFormHandler = async (event) => {
     console.log('submitted');
     const description = document.querySelector('#comment-desc').value.trim();
     console.log(description);
-    const post_id = document.querySelector('input[name="post-id"]').value;
+    const post_id = document.querySelector('input').getAttribute('data-id');
 
-
-    console.log(post_id)
     if (description && post_id) {
         const response = await fetch(`/api/comment`, {
             method: 'POST',
@@ -15,9 +13,11 @@ const commentFormHandler = async (event) => {
                 'Content-Type': 'application/json',
             },
         });
-
+        
+        console.log(response)
         if (response.ok) {
-            document.location.replace(`/post/${post_id}`);
+            // refresh automatically
+            document.location.reload()
         } else {
             alert('Failed to create comment');
         }
